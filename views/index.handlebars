@@ -1,0 +1,49 @@
+<div class="container">
+    <h1>Time to devour burgers!</h1>
+
+    <img id="burgerImg" src="/assets/img/burger.jpg">
+</div>
+<div class="container" id="notDevou">
+    <div class="row">
+        <div class="col">
+            <h2>Burgers that are not Devoured!</h2>
+
+            <ul>
+                {{#each burgers}}
+                {{#unless devoured}}
+                {{!-- devoured on top --}}
+                <li>
+                    {{burger_name}}
+                </li>
+                <button data-id={{id}} data-devoured="true" class="not-devou">Devour burger! </button>
+                {{/unless}}
+                {{/each}}
+            </ul>
+
+        </div>
+        <div class="col">
+            <h2>Burgers that are devoured!</h2>
+            <ul>
+                {{#each burgers}}
+                {{#if devoured}}
+                <li>
+                    {{burger_name}}
+                </li>
+                {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container" id="add">
+    <h2>Add a Burger</h2>
+    <form action="/api/burgers" method="POST" class="create-form">
+
+        <div class="form-group">
+            <label for="bu">Burger Name:</label>
+            <input type="text" id="bu" name="burger_name">
+        </div>
+
+        <button type="submit">Add Burger</button>
+    </form>
+</div>
